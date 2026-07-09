@@ -58,4 +58,32 @@ describe("App", () => {
       screen.queryByText(/已產生 \d+ 筆安全邊界草稿/),
     ).not.toBeInTheDocument();
   });
+
+  it("shows manpower classification without marking it as dispatchable", () => {
+    render(<App />);
+
+    fireEvent.click(screen.getByRole("button", { name: "整理工作台" }));
+
+    expect(screen.getByText("人力需求分類")).toBeInTheDocument();
+    expect(screen.getByText("清泥 / 清淤人力")).toBeInTheDocument();
+    expect(screen.getByText("水電專業人力")).toBeInTheDocument();
+    expect(screen.getByText("搬運協助人力")).toBeInTheDocument();
+    expect(screen.getAllByText("不能直接變成志工任務").length).toBeGreaterThan(
+      0,
+    );
+  });
+
+  it("lets learners expand manpower review questions", () => {
+    render(<App />);
+
+    fireEvent.click(screen.getByRole("button", { name: "整理工作台" }));
+
+    const toggle = screen.getAllByRole("button", { name: "查看確認問題" })[0];
+    fireEvent.click(toggle);
+
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getAllByText(/這筆資訊仍是原始資訊/).length).toBeGreaterThan(
+      0,
+    );
+  });
 });

@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { RecordCard } from "../../components/RecordCard";
 import { StatusBadge } from "../../components/StatusBadge";
 import { Phase0JudgementCard } from "./Phase0JudgementCard";
-import { createPhase0Judgement } from "./phase0-heuristics";
+import { Phase0ManpowerPanel } from "./Phase0ManpowerPanel";
+import { Phase0Navigator } from "./Phase0Navigator";
+import {
+  createPhase0Judgement,
+  getPhase0ManpowerNeeds,
+} from "./phase0-heuristics";
 import type { Phase0MessyRecord } from "./phase0-types";
+import type { Phase0DataQualityTag } from "./phase0-heuristics";
 
 export function Phase0Workbench({
   records,
@@ -13,9 +20,14 @@ export function Phase0Workbench({
   selectedRecordId: string;
   onSelect: (recordId: string) => void;
 }) {
+  const [activeFilter, setActiveFilter] = useState<Phase0DataQualityTag | null>(
+    null,
+  );
+
   const selectedRecord =
     records.find((record) => record.id === selectedRecordId) ?? records[0];
   const safetyBoundary = createPhase0Judgement(selectedRecord);
+  const manpowerNeeds = getPhase0ManpowerNeeds(records);
 
   return (
     <div className="workbench">
@@ -27,6 +39,20 @@ export function Phase0Workbench({
           補上；這不是 runtime LLM 分析，也不是正式資料模型。
         </p>
       </div>
+
+      <Phase0Navigator
+        records={records}
+        selectedRecordId={selectedRecordId}
+        onSelect={onSelect}
+        onFilterChange={setActiveFilter}
+        activeFilter={activeFilter}
+      />
+
+      <Phase0ManpowerPanel
+        needs={manpowerNeeds}
+        selectedRecordId={selectedRecord.id}
+        onSelectRecord={onSelect}
+      />
 
       <div className="workbench__layout">
         <aside className="workbench__queue" aria-label="選擇原始資訊">

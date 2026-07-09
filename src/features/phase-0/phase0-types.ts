@@ -25,6 +25,21 @@ export type Phase0MessyRecord = {
   updatedAt: string;
 };
 
+export type Phase0ManpowerCategory =
+  | "cleanup_support"
+  | "electrical_support"
+  | "moving_support"
+  | "field_confirmation"
+  | "non_manpower_or_unclear";
+
+export type Phase0ManpowerNeed = {
+  category: Phase0ManpowerCategory;
+  label: string;
+  recordIds: string[];
+  reviewQuestions: string[];
+  unsafeToDispatch: true;
+};
+
 export type Phase0JudgementDraft = {
   messyRecordId: string;
   possibleKind: Phase0PossibleKind;

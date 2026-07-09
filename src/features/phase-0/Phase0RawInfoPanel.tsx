@@ -1,6 +1,7 @@
 import { SourceLabel } from "../../components/SourceLabel";
 import { StatusBadge } from "../../components/StatusBadge";
 import { formatDateTime } from "../../lib/date";
+import { getPhase0DataQualityTags } from "./phase0-heuristics";
 import type { Phase0MessyRecord } from "./phase0-types";
 
 export function Phase0RawInfoPanel({
@@ -23,9 +24,12 @@ export function Phase0RawInfoPanel({
       </div>
 
       <div className="grid">
-        {records.map((record) => (
+        {records.map((record) => {
+          const tags = getPhase0DataQualityTags(record.id);
+          const tagClasses = tags.join(" ");
+          return (
           <article
-            className={`record-card ${record.id === selectedRecordId ? "record-card--selected" : ""}`}
+            className={`record-card ${tagClasses} ${record.id === selectedRecordId ? "record-card--selected" : ""}`}
             key={record.id}
           >
             <div className="record-card__header">
@@ -41,7 +45,8 @@ export function Phase0RawInfoPanel({
               送到整理工作台
             </button>
           </article>
-        ))}
+        );
+        })}
       </div>
     </div>
   );
