@@ -158,8 +158,9 @@ describe("App", () => {
     fireEvent.click(screen.getByRole("button", { name: "3C" }));
 
     expect(screen.getAllByRole("button", { name: "+ 加入" })).toHaveLength(8);
-    expect(screen.getByText("iPhone")).toBeInTheDocument();
-    expect(screen.getByText("Samsung S27 Ultra")).toBeInTheDocument();
+    expect(screen.getByText("iPhone 18 Pro")).toBeInTheDocument();
+    expect(screen.getByText("Samsung Galaxy S27 Ultra")).toBeInTheDocument();
+    expect(screen.getByText("Google Pixel 11 Pro")).toBeInTheDocument();
 
     ["Apple Pay", "Samsung Pay", "LINE Pay", "Google Pay"].forEach((method) => {
       expect(screen.getByRole("button", { name: method })).toBeInTheDocument();

@@ -149,7 +149,7 @@ const products: Product[] = [
   },
   {
     id: "shop-iphone",
-    name: "iPhone",
+    name: "iPhone 18 Pro",
     category: "3C",
     price: 29900,
     stock: 4,
@@ -157,7 +157,7 @@ const products: Product[] = [
   },
   {
     id: "shop-samsung-s27-ultra",
-    name: "Samsung S27 Ultra",
+    name: "Samsung Galaxy S27 Ultra",
     category: "3C",
     price: 36900,
     stock: 3,
@@ -165,7 +165,7 @@ const products: Product[] = [
   },
   {
     id: "shop-pixel",
-    name: "Google Pixel",
+    name: "Google Pixel 11 Pro",
     category: "3C",
     price: 24900,
     stock: 5,
@@ -173,7 +173,7 @@ const products: Product[] = [
   },
   {
     id: "shop-ipad",
-    name: "iPad",
+    name: "iPad Air 13 吋 M4",
     category: "3C",
     price: 17900,
     stock: 6,
@@ -181,7 +181,7 @@ const products: Product[] = [
   },
   {
     id: "shop-macbook-air",
-    name: "MacBook Air",
+    name: "MacBook Air 13 吋 M5",
     category: "3C",
     price: 35900,
     stock: 2,
@@ -189,7 +189,7 @@ const products: Product[] = [
   },
   {
     id: "shop-airpods-pro",
-    name: "AirPods Pro",
+    name: "AirPods Pro 4",
     category: "3C",
     price: 7490,
     stock: 8,
@@ -197,7 +197,7 @@ const products: Product[] = [
   },
   {
     id: "shop-galaxy-watch",
-    name: "Galaxy Watch",
+    name: "Samsung Galaxy Watch 9 Classic",
     category: "3C",
     price: 9900,
     stock: 7,
@@ -205,7 +205,7 @@ const products: Product[] = [
   },
   {
     id: "shop-usb-c-charger",
-    name: "USB-C 快充組",
+    name: "USB-C 65W GaN 快充組",
     category: "3C",
     price: 1290,
     stock: 12,
