@@ -153,7 +153,7 @@ const products: Product[] = [
     category: "3C",
     price: 29900,
     stock: 4,
-    note: "示範用手機商品，不代表真實規格或售價。",
+    note: "口袋裡的導演椅，拍照、剪片、回訊息都像按下加速鍵。",
   },
   {
     id: "shop-samsung-s27-ultra",
@@ -161,7 +161,7 @@ const products: Product[] = [
     category: "3C",
     price: 36900,
     stock: 3,
-    note: "示範用旗艦手機商品，僅供前端購物流程展示。",
+    note: "大螢幕加手寫筆，靈感一來就把草圖、清單、待辦全收進去。",
   },
   {
     id: "shop-pixel",
@@ -169,7 +169,7 @@ const products: Product[] = [
     category: "3C",
     price: 24900,
     stock: 5,
-    note: "示範用 Android 手機商品，不連外部商品資料。",
+    note: "把日常拍成電影感，夜景、筆記與碎念都整理得乾乾淨淨。",
   },
   {
     id: "shop-ipad",
@@ -177,7 +177,7 @@ const products: Product[] = [
     category: "3C",
     price: 17900,
     stock: 6,
-    note: "適合展示平板類商品的購物車互動。",
+    note: "像把白板折進背包，畫流程、看資料、追劇切換都順手。",
   },
   {
     id: "shop-macbook-air",
@@ -185,7 +185,7 @@ const products: Product[] = [
     category: "3C",
     price: 35900,
     stock: 2,
-    note: "示範用筆電商品，價格與庫存皆為假資料。",
+    note: "輕到像講義，開專案卻像開跑車，適合一邊 demo 一邊假裝很冷靜。",
   },
   {
     id: "shop-airpods-pro",
@@ -193,7 +193,7 @@ const products: Product[] = [
     category: "3C",
     price: 7490,
     stock: 8,
-    note: "示範用耳機商品，可測試加入購物車與數量調整。",
+    note: "戴上就是專注結界，把教室聲音淡出，留下你和待辦清單的對決。",
   },
   {
     id: "shop-galaxy-watch",
@@ -201,7 +201,7 @@ const products: Product[] = [
     category: "3C",
     price: 9900,
     stock: 7,
-    note: "示範用穿戴裝置商品，未連接真實庫存。",
+    note: "手腕上的小司令台，提醒、計時、訊息一跳，行程不再到處迷路。",
   },
   {
     id: "shop-usb-c-charger",
@@ -209,7 +209,7 @@ const products: Product[] = [
     category: "3C",
     price: 1290,
     stock: 12,
-    note: "示範用配件商品，適合測試低單價 3C 商品。",
+    note: "插上去像幫裝置喝濃縮咖啡，一顆頭救手機、平板、筆電的低電量焦慮。",
   },
 ];
 

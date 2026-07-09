@@ -161,6 +161,7 @@ describe("App", () => {
     expect(screen.getByText("iPhone 18 Pro")).toBeInTheDocument();
     expect(screen.getByText("Samsung Galaxy S27 Ultra")).toBeInTheDocument();
     expect(screen.getByText("Google Pixel 11 Pro")).toBeInTheDocument();
+    expect(screen.getByText(/戴上就是專注結界/)).toBeInTheDocument();
 
     ["Apple Pay", "Samsung Pay", "LINE Pay", "Google Pay"].forEach((method) => {
       expect(screen.getByRole("button", { name: method })).toBeInTheDocument();

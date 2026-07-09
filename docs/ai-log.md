@@ -43,6 +43,7 @@
 | 2026-07-09 | v1      | 依流程圖實作工作台     | Agent 將流程圖落成 `/v1/` 前端：原始資訊進入、來源與內容完整性檢查、候選結果、候選任務待確認、人工判斷紀錄與流程輸出統計                                  | 採用        | 只使用 Phase 0 原始資訊；候選結果與候選任務都保留待確認，未把未查核資訊顯示成已確認，也未新增後端、外部 API 或 runtime LLM | `src/features/v1/V1FlowWorkbench.tsx`, `src/features/v1/v1-flow.ts`, `src/app/App.tsx`, `v1/index.html`, `tests/v1-flow.test.ts` |
 | 2026-07-09 | 部署    | 修正 Pages deploy 失敗 | Agent 查 GitHub Actions 後確認 CI 與 `pnpm build` 已成功，失敗發生在 `actions/deploy-pages@v4` 建立 Pages deployment，建議補上 Pages 設定步驟             | 採用        | 這不是前端 build 錯誤；需要讓 workflow 在部署前設定 GitHub Pages，避免 deploy action 因 Pages 未啟用而回 404               | `.github/workflows/deploy-pages.yml`, `docs/ai-log.md`                                                                           |
 | 2026-07-09 | UI 示範 | 補上 3C 具體型號       | Agent 將 3C 假資料商品從泛稱改成具體型號，例如 `iPhone 18 Pro`、`Samsung Galaxy S27 Ultra`、`Google Pixel 11 Pro`                                         | 採用        | 這些仍是前端示範商品名稱，不代表真實規格、庫存或售價，也沒有新增外部 API、資料庫或真實商品資料                             | `src/features/shopping/ShoppingPage.tsx`, `tests/app-smoke.test.tsx`, `docs/ai-log.md`                                           |
+| 2026-07-09 | UI 示範 | 強化 3C 商品說明文案   | Agent 將 3C 商品說明改成更有畫面感的短文案，例如「專注結界」「口袋裡的導演椅」「手腕上的小司令台」                                                        | 採用        | 依使用者要求強化購物頁示範文案風格；只改前端假資料說明，未新增外部資料、真實規格欄位或 API                                 | `src/features/shopping/ShoppingPage.tsx`, `tests/app-smoke.test.tsx`, `docs/ai-log.md`                                           |
 
 ## 課後反思
 
