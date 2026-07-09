@@ -28,24 +28,24 @@ export function Phase0RawInfoPanel({
           const tags = getPhase0DataQualityTags(record.id);
           const tagClasses = tags.join(" ");
           return (
-          <article
-            className={`record-card ${tagClasses} ${record.id === selectedRecordId ? "record-card--selected" : ""}`}
-            key={record.id}
-          >
-            <div className="record-card__header">
-              <h3>{record.id}</h3>
-              <StatusBadge status={record.verificationStatus} />
-            </div>
-            <p>{record.rawText}</p>
-            <div className="record-card__meta">
-              <SourceLabel sourceType={record.sourceType} />
-              <span>更新：{formatDateTime(record.updatedAt)}</span>
-            </div>
-            <button type="button" onClick={() => onSelect(record.id)}>
-              送到整理工作台
-            </button>
-          </article>
-        );
+            <article
+              className={`record-card ${tagClasses} ${record.id === selectedRecordId ? "record-card--selected" : ""}`}
+              key={record.id}
+            >
+              <div className="record-card__header">
+                <h3>{record.id}</h3>
+                <StatusBadge status={record.verificationStatus} />
+              </div>
+              <p>{record.rawText}</p>
+              <div className="record-card__meta">
+                <SourceLabel sourceType={record.sourceType} />
+                <span>更新：{formatDateTime(record.updatedAt)}</span>
+              </div>
+              <button type="button" onClick={() => onSelect(record.id)}>
+                送到整理工作台
+              </button>
+            </article>
+          );
         })}
       </div>
     </div>

@@ -73,6 +73,20 @@ describe("App", () => {
     );
   });
 
+  it("shows an interactive shopping page", () => {
+    render(<App />);
+
+    fireEvent.click(screen.getByRole("button", { name: "購物頁面" }));
+
+    expect(
+      screen.getByRole("heading", { name: "購物頁面" }),
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getAllByRole("button", { name: "+ 加入" })[0]);
+
+    expect(screen.getByText("1 件商品")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /減少/ })).toBeInTheDocument();
+  });
+
   it("lets learners expand manpower review questions", () => {
     render(<App />);
 

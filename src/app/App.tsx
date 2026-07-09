@@ -4,12 +4,14 @@ import { EmptyState } from "../components/EmptyState";
 import { Phase0RawInfoPanel } from "../features/phase-0/Phase0RawInfoPanel";
 import { Phase0Workbench } from "../features/phase-0/Phase0Workbench";
 import type { Phase0MessyRecord } from "../features/phase-0/phase0-types";
+import { ShoppingPage } from "../features/shopping/ShoppingPage";
 
-type TabKey = "raw" | "workbench";
+type TabKey = "raw" | "workbench" | "shopping";
 
 const tabs: Array<{ key: TabKey; label: string }> = [
   { key: "raw", label: "原始資訊" },
   { key: "workbench", label: "整理工作台" },
+  { key: "shopping", label: "購物頁面" },
 ];
 
 const phase0Records = messyReports satisfies Phase0MessyRecord[];
@@ -58,12 +60,14 @@ export function App() {
             selectedRecordId={selectedRecordId}
             onSelect={selectForWorkbench}
           />
-        ) : (
+        ) : activeTab === "workbench" ? (
           <Phase0Workbench
             records={phase0Records}
             selectedRecordId={selectedRecordId}
             onSelect={setSelectedRecordId}
           />
+        ) : (
+          <ShoppingPage />
         )}
       </section>
     </main>
