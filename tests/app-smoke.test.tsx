@@ -45,6 +45,58 @@ describe("App", () => {
     expect(screen.getAllByText("未查核").length).toBeGreaterThan(0);
   });
 
+  it("links from home to the v1 flow workbench", () => {
+    render(<App />);
+
+    fireEvent.click(screen.getByRole("link", { name: "進入 v1 流程工作台" }));
+
+    expect(window.location.pathname).toBe("/v1/");
+    expect(
+      screen.getByRole("heading", { name: "資訊流程工作台" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/資料仍來自 Phase 0 原始資訊/)).toBeInTheDocument();
+  });
+
+  it("renders the v1 flow workbench from the direct path", () => {
+    window.history.pushState({}, "", "/v1/");
+
+    render(<App />);
+
+    expect(
+      screen.getByRole("heading", { name: "資訊流程工作台" }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByText("候選任務（待確認）").length).toBeGreaterThan(0);
+    expect(screen.queryByText("已確認候選任務")).not.toBeInTheDocument();
+  });
+
+  it("creates only review-needed candidate task records in v1", () => {
+    window.history.pushState({}, "", "/v1/");
+    render(<App />);
+
+    fireEvent.click(screen.getByRole("button", { name: "完整，可進下一步" }));
+    fireEvent.click(
+      screen.getByRole("button", { name: "足以建立候選結果（待確認）" }),
+    );
+    fireEvent.change(screen.getByLabelText("候選結果摘要"), {
+      target: { value: "依原文建立的候選結果草稿" },
+    });
+    fireEvent.click(
+      screen.getByRole("button", { name: "可建立候選任務（待確認）" }),
+    );
+    fireEvent.change(screen.getByLabelText("候選任務摘要"), {
+      target: { value: "待人工確認的候選任務草稿" },
+    });
+    fireEvent.change(screen.getByLabelText("判斷理由"), {
+      target: {
+        value: "仍缺少完整地點與現場安全確認，所以只能先留待確認紀錄。",
+      },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "留下人工判斷紀錄" }));
+
+    expect(screen.getByText(/M-001 · 候選任務（待確認）/)).toBeInTheDocument();
+    expect(screen.queryByText(/已指派/)).not.toBeInTheDocument();
+  });
+
   it("keeps draft CRUD as learner work instead of starter output", () => {
     render(<App />);
 
@@ -85,6 +137,40 @@ describe("App", () => {
 
     expect(screen.getByText("1 件商品")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /減少/ })).toBeInTheDocument();
+  });
+
+  it("shows four products in every shopping category", () => {
+    render(<App />);
+
+    fireEvent.click(screen.getByRole("button", { name: "購物頁面" }));
+
+    ["文具", "飲品", "點心", "用品"].forEach((category) => {
+      fireEvent.click(screen.getByRole("button", { name: category }));
+
+      expect(screen.getAllByRole("button", { name: "+ 加入" })).toHaveLength(4);
+    });
+  });
+
+  it("shows eight 3C products and wallet payment methods", () => {
+    render(<App />);
+
+    fireEvent.click(screen.getByRole("button", { name: "購物頁面" }));
+    fireEvent.click(screen.getByRole("button", { name: "3C" }));
+
+    expect(screen.getAllByRole("button", { name: "+ 加入" })).toHaveLength(8);
+    expect(screen.getByText("iPhone")).toBeInTheDocument();
+    expect(screen.getByText("Samsung S27 Ultra")).toBeInTheDocument();
+
+    ["Apple Pay", "Samsung Pay", "LINE Pay", "Google Pay"].forEach((method) => {
+      expect(screen.getByRole("button", { name: method })).toBeInTheDocument();
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: "LINE Pay" }));
+
+    expect(screen.getByRole("button", { name: "LINE Pay" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
   });
 
   it("lets learners expand manpower review questions", () => {

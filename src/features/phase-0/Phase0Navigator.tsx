@@ -11,27 +11,27 @@ const tagConfig: Record<
   relatively_usable: {
     label: "可相對使用",
     description: "資訊清晰，有時間戳和具體數字",
-    color: "#10b981",
+    color: "var(--morandi-sage-deep)",
   },
   cannot_dispatch: {
     label: "不能直接派人",
     description: "缺少關鍵資訊（地址、確認人、原因等）",
-    color: "#ef4444",
+    color: "var(--morandi-danger-text)",
   },
   operator_not_subject: {
     label: "操作者不是當事人",
     description: "第三方轉述，缺少當事人確認",
-    color: "#f59e0b",
+    color: "var(--morandi-clay)",
   },
   conflicting_info: {
     label: "資訊互相矛盾",
     description: "多筆資訊內容不一致，需要確認",
-    color: "#8b5cf6",
+    color: "var(--morandi-mauve-deep)",
   },
   outdated: {
     label: "可能已過時",
     description: "時效性資訊，需要更新驗證",
-    color: "#6b7280",
+    color: "var(--morandi-line)",
   },
 };
 
@@ -113,7 +113,7 @@ export function Phase0Navigator({
                 activeFilter === tag
                   ? {
                       backgroundColor: tagConfig[tag].color,
-                      color: "white",
+                      color: "var(--morandi-surface)",
                     }
                   : {
                       borderColor: tagConfig[tag].color,
